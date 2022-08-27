@@ -13,6 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="@drawable/bg_border_box_bg9"
     >
     <TextView
         android:id="@+id/time"
@@ -29,6 +30,7 @@
         android:text="@{obj.feedCode}"
         />
     <TextView
+        android:gravity="center|end"
         android:id="@+id/price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,6 +38,7 @@
         android:text="@{obj.price}"
         />
     <TextView
+        android:gravity="center|end"
         android:id="@+id/change"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,6 +47,7 @@
         android:textColor="@{obj.getColor(obj.changeInt)}"
         />
     <TextView
+        android:gravity="center|end"
         android:id="@+id/volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

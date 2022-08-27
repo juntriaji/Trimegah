@@ -48,7 +48,7 @@ public class TModel {
 
 
     public int getColor(int input){
-        return input > 0 ? R.color.teal_200: R.color.black;
+        return input > 0 ? R.color.Green1: R.color.Red1;
     }
 
     public void setChange(int change) {
