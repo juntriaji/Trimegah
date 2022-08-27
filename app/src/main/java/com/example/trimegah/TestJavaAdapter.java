@@ -2,6 +2,7 @@ package com.example.trimegah;
 
 import androidx.annotation.NonNull;
 
+import com.example.trimegah.databinding.CellBinding;
 import com.example.trimegah.model.TModel;
 
 import java.util.ArrayList;
@@ -23,6 +24,11 @@ public class TestJavaAdapter extends JBaseAdapter{
     public void onBindViewHolder(@NonNull CellHolder holder, int position) {
         TModel model = (TModel) getObjForPosition(position);
         holder.bind(model);
+
+        CellBinding binding = (CellBinding) holder.getBinding();
+        binding.change.setTextColor(model.getColor(holder.itemView));
+        binding.price.setTextColor(model.getColor(holder.itemView));
+
     }
 
     @NonNull

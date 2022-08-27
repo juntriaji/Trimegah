@@ -1,5 +1,9 @@
 package com.example.trimegah.model;
 
+import android.view.View;
+
+import androidx.core.content.res.ResourcesCompat;
+
 import com.example.trimegah.R;
 import com.example.trimegah.util.Common;
 
@@ -47,8 +51,9 @@ public class TModel {
 
 
 
-    public int getColor(int input){
-        return input > 0 ? R.color.Green1: R.color.Red1;
+    public int getColor(View view){
+        return ResourcesCompat.getColor(view.getResources(), change > 0 ? R.color.Green1: R.color.Red1, null);
+
     }
 
     public void setChange(int change) {
