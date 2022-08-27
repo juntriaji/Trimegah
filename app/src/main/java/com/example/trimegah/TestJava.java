@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 
 import com.example.trimegah.databinding.ActivityTestJavaBinding;
 import com.example.trimegah.model.TModel;
@@ -20,7 +23,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TestJava extends AppCompatActivity {
-    int maxRow = 50;
+    int maxRow = 10;
+    int rowHeight = 0;
+    int layoutHeight = 0;
     ActivityTestJavaBinding binding;
     TestJavaAdapter adapter;
     Handler handler = new Handler(Looper.myLooper());
@@ -53,12 +58,15 @@ public class TestJava extends AppCompatActivity {
 
             }
         });
+        //calculateRowCount();
+        binding.recyclerView.postDelayed(this::calculateRowCount, 100);
         setContentView(binding.getRoot());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        //calculateRowCount();
         scheduleTask();
     }
 
@@ -74,6 +82,7 @@ public class TestJava extends AppCompatActivity {
 
     void scheduleTask()
     {
+
         final int[] row = {0};
         new Timer().schedule(new TimerTask() {
             @Override
@@ -81,12 +90,39 @@ public class TestJava extends AppCompatActivity {
                 if(row[0] > adapter.getData().size() -2) row[0] = -1;
 
                 handler.post(() -> {
-                    Log.i("->", "" + row[0]);
+                    //Log.i("->", "" + row[0]);
                     adapter.getData().set(row[0], new Common().generateRandomT());
                     adapter.notifyItemChanged(row[0]);
                 });
                 row[0]++;
+                //Log.e("-> ", "" + maxRow);
             }
-        }, 0,100);
+        }, 1000,100);
+    }
+
+    private int getLayoutHeight() {
+        RecyclerView recyclerView = binding.recyclerView;
+        if (layoutHeight == 0)
+            layoutHeight = recyclerView.getMeasuredHeight();
+
+        return layoutHeight;
+    }
+
+    private int getRowHeight() {
+        if (rowHeight == 0) {
+            //ada mAdapter = listRunningTrade.getAdapter();
+            //RecyclerView.ViewHolder holder = binding.recyclerView.getChildAt(0);
+            View mView = binding.recyclerView.getChildAt(0);
+            mView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            rowHeight = mView.getMeasuredHeight();
+        }
+
+        return rowHeight;
+    }
+
+    private void calculateRowCount() {
+        maxRow = getLayoutHeight() / getRowHeight();
+        //initialData();
+        adapter.setData(initialData());
     }
 }

@@ -30,7 +30,7 @@
         android:text="@{obj.feedCode}"
         />
     <TextView
-        android:gravity="center|end"
+        android:gravity="end"
         android:id="@+id/price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
 
         />
     <TextView
-        android:gravity="center|end"
+        android:gravity="end"
         android:id="@+id/change"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         android:text="@{obj.change}"
         />
     <TextView
-        android:gravity="center|end"
+        android:gravity="end"
         android:id="@+id/volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

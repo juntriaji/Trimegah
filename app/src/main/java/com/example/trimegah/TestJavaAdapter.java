@@ -1,6 +1,9 @@
 package com.example.trimegah;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trimegah.databinding.CellBinding;
 import com.example.trimegah.model.TModel;
@@ -13,12 +16,18 @@ public class TestJavaAdapter extends JBaseAdapter{
         return data;
     }
 
+    public void setData(List<TModel> data) {
+        this.data = data;
+        notifyDataSetChanged();
+    }
+
     private List<TModel> data = new ArrayList<>();
 
     public TestJavaAdapter(List<TModel> data)
     {
         this.data = data;
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull CellHolder holder, int position) {
@@ -29,7 +38,9 @@ public class TestJavaAdapter extends JBaseAdapter{
         binding.change.setTextColor(model.getColor(holder.itemView));
         binding.price.setTextColor(model.getColor(holder.itemView));
 
+
     }
+
 
     @NonNull
     @Override

@@ -20,6 +20,8 @@ abstract class JBaseAdapter : RecyclerView.Adapter<CellHolder>() {
         holder.bind(obj)
     }
 
+
+
     override fun getItemViewType(position: Int): Int {
         return getLayoutIdForPosition(position)
     }
