@@ -2,6 +2,7 @@ package com.example.trimegah;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.util.Log;
 import com.example.trimegah.databinding.ActivityTestJavaBinding;
 import com.example.trimegah.model.TModel;
 import com.example.trimegah.util.Common;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,8 @@ public class TestJava extends AppCompatActivity {
     ActivityTestJavaBinding binding;
     TestJavaAdapter adapter;
     Handler handler = new Handler(Looper.myLooper());
+    ///private ViewPagerAdapter  = new ViewPagerAdapter(getSupportFragmentManager());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,23 @@ public class TestJava extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setItemAnimator(null);
+
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         setContentView(binding.getRoot());
     }
 

@@ -2,5 +2,7 @@
     <string name="app_name">Trimegah</string>
     <string name="menu1">Menu 1</string>
     <string name="menu2">Menu 2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
