@@ -87,14 +87,16 @@ public class TestJava extends AppCompatActivity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                if(row[0] > adapter.getData().size() -2) row[0] = -1;
+
 
                 handler.post(() -> {
                     //Log.i("->", "" + row[0]);
+                    if(row[0] > adapter.getData().size() -1) row[0] = 0;
                     adapter.getData().set(row[0], new Common().generateRandomT());
                     adapter.notifyItemChanged(row[0]);
+                    row[0]++;
                 });
-                row[0]++;
+
                 //Log.e("-> ", "" + maxRow);
             }
         }, 1000,100);
