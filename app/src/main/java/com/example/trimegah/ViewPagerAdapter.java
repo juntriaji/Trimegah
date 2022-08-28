@@ -7,30 +7,26 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
-    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
-        super(fragmentActivity);
-    }
+    List<Fragment> fragmentList = new ArrayList<>();
 
-    public ViewPagerAdapter(@NonNull Fragment fragment) {
-        super(fragment);
-    }
-
-    public ViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public ViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, List<Fragment> fragmentList) {
         super(fragmentManager, lifecycle);
+        this.fragmentList = fragmentList;
     }
-
 
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        if(position == 0) return new FeedFragment();
-        return new BlankFragment();
+        return fragmentList.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return fragmentList.size();
     }
 }

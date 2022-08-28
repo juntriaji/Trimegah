@@ -75,4 +75,15 @@ public class TModel {
         this.change = change;
         this.volume = volume;
     }
+
+    @Override
+    public String toString() {
+        return "TModel{" +
+                "feedCode='" + feedCode + '\'' +
+                ", time=" + time +
+                ", price=" + price +
+                ", change=" + change +
+                ", volume=" + volume +
+                '}';
+    }
 }
