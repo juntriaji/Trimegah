@@ -92,7 +92,7 @@ public class TestJava extends AppCompatActivity {
             @Override
             public void run() {
                 for(int i=0; i < 100; i++){
-                    Log.e("test ", ""+i);
+                    // Log.e("test ", ""+i);
                     handler.post(() -> {
                         dataModel.setTModel(new Common().generateRandomT());
 

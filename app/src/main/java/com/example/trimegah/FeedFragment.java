@@ -1,21 +1,16 @@
 package com.example.trimegah;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.trimegah.databinding.FragmentFeedBinding;
 import com.example.trimegah.model.TModel;
@@ -26,14 +21,11 @@ import java.util.List;
 
 public class FeedFragment extends Fragment {
 
-    private FeedViewModel mViewModel;
     TestJavaAdapter adapter;
     FragmentFeedBinding binding;
-    int maxRow = 10;
     int rowHeight = 0;
     int layoutHeight = 0;
     int updateRow = 0;
-    Handler handler = new Handler(Looper.myLooper());
 
     public static FeedFragment newInstance() {
         return new FeedFragment();
@@ -43,24 +35,18 @@ public class FeedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentFeedBinding.inflate(inflater, container, false);
-        adapter = new TestJavaAdapter(initialData());
+        adapter = new TestJavaAdapter(initialData(1));
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setItemAnimator(null);
-        binding.recyclerView.postDelayed(this::calculateRowCount, 100);
+        binding.recyclerView.postDelayed(this::calculateRowCount, 1000);
 
         return binding.getRoot();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FeedViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
-    List<TModel> initialData()
+    List<TModel> initialData(int maxRow)
     {
         List<TModel> t = new ArrayList<>();
         for(int i=0; i <=maxRow; i++ )
@@ -89,8 +75,8 @@ public class FeedFragment extends Fragment {
     }
 
     private void calculateRowCount() {
-        maxRow = getLayoutHeight() / getRowHeight();
-        adapter.setData(initialData());
+        int maxRow = getLayoutHeight() / getRowHeight();
+        adapter.setData(initialData(maxRow));
         FeedViewModel feedViewModel = new ViewModelProvider(requireActivity()).get(FeedViewModel.class);
         feedViewModel.getTModel().observe(getViewLifecycleOwner(), tModel -> {
             //Log.e("=>\n", tModel.toString());

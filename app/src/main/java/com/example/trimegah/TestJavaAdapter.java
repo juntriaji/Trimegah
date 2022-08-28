@@ -1,14 +1,10 @@
 package com.example.trimegah;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trimegah.databinding.CellBinding;
 import com.example.trimegah.model.TModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestJavaAdapter extends JBaseAdapter{
@@ -18,12 +14,15 @@ public class TestJavaAdapter extends JBaseAdapter{
 
     public void setData(List<TModel> data) {
         this.data = data;
-        notifyDataSetChanged();
+        for(int i=0; i < this.data.size(); i++)
+        {
+            notifyItemChanged(i);
+        }
     }
 
-    private List<TModel> data = new ArrayList<>();
+    private List<TModel> data;
 
-    public TestJavaAdapter(List<TModel> data)
+    public TestJavaAdapter(@NonNull List<TModel> data)
     {
         this.data = data;
     }
