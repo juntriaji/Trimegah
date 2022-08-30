@@ -7,40 +7,6 @@
     android:orientation="vertical"
     tools:context=".FeedFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:layout_marginTop="8dp"
-        >
-        <ImageButton
-            android:id="@+id/button_menu"
-            android:layout_gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:src="@drawable/baseline_menu_white_24dp"
-            android:background="@color/BG1"
-            />
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:textSize="26sp"
-            android:text="@string/app_name"
-            android:layout_height="match_parent"/>
-        <Button
-            android:background="@drawable/bg_border_boxfull_bg9"
-            android:id="@+id/user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="USERID"
-            android:textColor="@color/black"
-            />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/live_trade_holder"
